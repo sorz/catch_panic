@@ -34,5 +34,6 @@ pub fn default_handler(mut env: JNIEnv, err: Box<dyn Any + Send + 'static>) {
             None => "Box<dyn Any>",
         },
     };
+    env.exception_clear().unwrap();
     env.throw_new("java/lang/RuntimeException", msg).unwrap();
 }
